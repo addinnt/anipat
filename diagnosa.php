@@ -80,14 +80,14 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a  href="index.html">home</a></li>
-                                        <li><a href="about.html">about us</a></li>
-                                        <li><a href="#">Cara Perawatan <i class="ti-angle-down"></i></a>
+                                        <li><a href="about.html">about</a></li>
+                                        <li><a href="#">blog <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="blog.html">blog</a></li>
                                                 <li><a href="single-blog.html">single-blog</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">Diagnosa <i class="ti-angle-down"></i></a>
+                                        <li><a href="#">pages <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="elements.html">elements</a></li>
                                                 
@@ -115,7 +115,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="bradcam_text text-center">
-                        <h3>Services</h3>
+                        <h3>Diagnosa</h3>
                     </div>
                 </div>
             </div>
@@ -123,188 +123,64 @@
     </div>
     <!-- bradcam_area_end -->
 
-    <!-- service_area_start  -->
-    <div class="service_area">
+    <!-- pet_care_area_start  -->
+    <div class="pet_care_area">
         <div class="container">
-            <div class="row justify-content-center ">
-                <div class="col-lg-7 col-md-10">
-                    <div class="section_title text-center mb-95">
-                        <h3>Services for every dog</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_service">
-                         <div class="service_thumb service_icon_bg_1 d-flex align-items-center justify-content-center">
-                             <div class="service_icon">
-                                 <img src="img/service/service_icon_1.png" alt="">
-                             </div>
-                         </div>
-                         <div class="service_content text-center">
-                            <h3>Pet Boarding</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</p>
-                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_service active">
-                         <div class="service_thumb service_icon_bg_1 d-flex align-items-center justify-content-center">
-                             <div class="service_icon">
-                                 <img src="img/service/service_icon_2.png" alt="">
-                             </div>
-                         </div>
-                         <div class="service_content text-center">
-                            <h3>Healthy Meals</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</p>
-                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_service">
-                         <div class="service_thumb service_icon_bg_1 d-flex align-items-center justify-content-center">
-                             <div class="service_icon">
-                                 <img src="img/service/service_icon_3.png" alt="">
-                             </div>
-                         </div>
-                         <div class="service_content text-center">
-                            <h3>Pet Spa</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</p>
-                         </div>
-                    </div>
-                </div>
-            </div>
+           
+           <form action="#" method="post">
+                                <div class="form-group form-float">
+                                    <div>
+                                        <?php
+                                        $conn=mysqli_connect("db4free.net", "proyek2py2020", "proyek2020", "anipat");
+                                        $result=mysqli_query($conn,"SELECT*FROM t_gejala");
+                                        while($row = mysqli_fetch_array($result)){
+                                                                        echo " 
+                                                     <div class='form-check form-check-inline'>
+                                                      <input class='form-check-input' type='checkbox' id='$row[id_gejala]' name='id_gejala[]' value='$row[penyakit]'>
+                                                      <label class='form-check-label' for='$row[id_gejala]'>".$row['nama']."</label>
+                                                    </div>
+                                                    ";
+                                            
+                                        }
+                                        ?>
+                                        
+                                    </div>
+                                </div>        
+ 
+
+                                <button type="submit" class="btn btn-success waves-effect btn-order">Analisa Gejala</button>
+                            </form> 
+        </div>
+
+        <div class="container">
+            <?php
+            if(isset($_POST['id_gejala'])){
+            $a=$_POST['id_gejala'];
+
+            // $a=array_unique($a);
+            foreach($a as $a){
+
+
+                 $conn=mysqli_connect("db4free.net", "proyek2py2020", "proyek2020", "anipat");
+                 $result=mysqli_query($conn,"SELECT*FROM t_penyakit WHERE id_penyakit ='$a'");
+                   $row = mysqli_fetch_array($result);
+            
+            $conn=mysqli_connect("db4free.net", "proyek2py2020", "proyek2020", "anipat");
+                 $result2=mysqli_query($conn,"SELECT*FROM t_obat WHERE id_penyakit ='$a'");
+                   $row2 = mysqli_fetch_array($result2);
+               echo "<p>PENYAKIT ".$row['nama']."</br>";
+               echo "OBAT ".$row2['obat']."</p>";
+
+                }
+            
+
+             }
+            ?>
         </div>
     </div>
-    <!-- service_area_end -->
+    <!-- pet_care_area_end  -->
 
-    <!-- testmonial_area_start  -->
-    <div class="testmonial_area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="textmonial_active owl-carousel">
-                        <div class="testmonial_wrap">
-                            <div class="single_testmonial d-flex align-items-center">
-                                <div class="test_thumb">
-                                    <img src="img/testmonial/1.png" alt="">
-                                </div>
-                                <div class="test_content">
-                                    <h4>Jhon Walker</h4>
-                                    <span>Head of web design</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testmonial_wrap">
-                            <div class="single_testmonial d-flex align-items-center">
-                                <div class="test_thumb">
-                                    <img src="img/testmonial/1.png" alt="">
-                                </div>
-                                <div class="test_content">
-                                    <h4>Jhon Walker</h4>
-                                    <span>Head of web design</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testmonial_wrap">
-                            <div class="single_testmonial d-flex align-items-center">
-                                <div class="test_thumb">
-                                    <img src="img/testmonial/1.png" alt="">
-                                </div>
-                                <div class="test_content">
-                                    <h4>Jhon Walker</h4>
-                                    <span>Head of web design</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <!-- testmonial_area_end  -->
-
-    <!-- team_area_start  -->
-    <div class="team_area">
-        <div class="container">
-            <div class="row justify-content-center ">
-                <div class="col-lg-6 col-md-10">
-                    <div class="section_title text-center mb-95">
-                        <h3>Our Team</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_team">
-                        <div class="thumb">
-                            <img src="img/team/1.png" alt="">
-                        </div>
-                        <div class="member_name text-center">
-                            <div class="mamber_inner">
-                                <h4>Rala Emaia</h4>
-                                <p>Senior Director</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_team">
-                        <div class="thumb">
-                            <img src="img/team/2.png" alt="">
-                        </div>
-                        <div class="member_name text-center">
-                            <div class="mamber_inner">
-                                <h4>jhon Smith</h4>
-                                <p>Senior Director</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_team">
-                        <div class="thumb">
-                            <img src="img/team/3.png" alt="">
-                        </div>
-                        <div class="member_name text-center">
-                            <div class="mamber_inner">
-                                <h4>Rala Emaia</h4>
-                                <p>Senior Director</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- team_area_start  -->
-
-    <!-- contact_anipat_start  -->
-    <div class="contact_anipat anipat_bg_1">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="contact_text text-center">
-                        <div class="section_title text-center">
-                            <h3>Why go with Anipat?</h3>
-                            <p>Because we know that even the best technology is only as good as the people behind it. 24/7 tech support.</p>
-                        </div>
-                        <div class="contact_btn d-flex align-items-center justify-content-center">
-                            <a href="contact.html" class="boxed-btn4">Contact Us</a>
-                            <p>Or  <a href="#"> +880 4664 216</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- contact_anipat_end  -->
+    
 
     <!-- footer_start  -->
     <footer class="footer">
@@ -408,7 +284,6 @@
     </footer>
     <!-- footer_end  -->
 
-
     <!-- JS here -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="js/vendor/jquery-1.12.4.min.js"></script>
@@ -458,4 +333,4 @@
     </script>
 </body>
 
-</html>
+</html>ß
