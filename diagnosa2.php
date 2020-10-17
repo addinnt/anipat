@@ -129,7 +129,7 @@
                                         $conn=mysqli_connect("localhost", "root", " ", "db_anipat");
                                         $result=mysqli_query($conn,"SELECT*FROM t_gejala");
                                         while($row = mysqli_fetch_array($result)){
-                                        echo " 
+                                                                        echo " 
                                                      <div class='form-check form-check-inline'>
                                                       <input class='form-check-input' type='checkbox' id='$row[id_gejala]' name='id_gejala[]' value='$row[penyakit]'>
                                                       <label class='form-check-label' for='$row[id_gejala]'>".$row['nama']."</label>
@@ -152,7 +152,7 @@
             if(isset($_POST['id_gejala'])){
             $a=$_POST['id_gejala'];
 
-            // $a=array_unique($a);
+            $a=array_unique($a);
             foreach($a as $a){
 
 

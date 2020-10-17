@@ -1,3 +1,3 @@
 <?php
-$conn=mysqli_connect("db4free.net", "proyek2py2020", "proyek2020", "anipat");
-?>
+$conn=mysqli_connect("localhost", "root", "", "db_anipat");
+

@@ -83,20 +83,17 @@
                                         <li><a href="about.html">about us</a></li>
                                         <li><a href="#">Cara Perawatan <i class="ti-angle-down"></i></a>
                                             <ul class="submenu" >
-                                                <li><a href="blog.html">blog</a></li>
-                                                <li><a href="single-blog.html">single-blog</a></li>
+                                                <li><a href="blog.php">blog</a></li>
+                                                <li><a href="single-blog.php">single-blog</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="diagnosa.php">Diagnosa</a></li>
-<<<<<<< HEAD
-=======
                                         <!-- <li><a href="#">pages <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="elements.html">diagnose</a></li>
                                                 
                                             </ul>
                                         </li> -->
->>>>>>> e67a65a5141fba19933e7e60b802f40bd4a90992
                                         <li><a href="service.html">services</a></li>
                                         <li><a href="contact.html">Contact</a></li>
                                     </ul>
@@ -144,11 +141,26 @@
                             </div>
 
                             <div class="blog_details">
-                                <a class="d-inline-block" href="single-blog.html">
-                                    <h2>9 Tips Sederhana Merawat Kucing Kesayangan</h2>
+                                <a class="d-inline-block" href="single-blog.php">
+                                    <h2>
+                                        <?php
+                                        $conn=mysqli_connect("localhost", "root", "", "db_anipat");
+                                        $result=mysqli_query($conn,"SELECT judul FROM t_artikel WHERE id = 1");
+                                        while($row = mysqli_fetch_array($result)){
+                                            echo $row['judul'];
+                                        }
+                                        ?>
+                                    </h2>
                                 </a>
-                                <p>Artikel ini ditujukan buat kalian yang pecinta kucing. Walau kadang ngeselin, kucing itu efektif banget untuk mengurangi stres! Selain menggemeskan, kucing juga bisa menjadi teman di kala sedih. Namun itu semua akan berlangsung mulus bila kamu tahu cara merawat kucing di rumah dengan benar! 
-                                    Buat yang belum tahu, yuk simak beberapa tips dari Blog Blibli Friends ini!</p>
+                                <p>
+                                    <?php
+                                    $conn=mysqli_connect("localhost", "root", "", "db_anipat");
+                                    $result=mysqli_query($conn,"SELECT preview FROM t_artikel WHERE id=1");
+                                    while($row = mysqli_fetch_array($result)){
+                                        echo $row['preview'];
+                                    }
+                                    ?>
+                                </p>
                                 <ul class="blog-info-link">
                                     <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
                                     <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
@@ -166,7 +178,7 @@
                             </div>
 
                             <div class="blog_details">
-                                <a class="d-inline-block" href="single-blog.html">
+                                <a class="d-inline-block" href="single-blog.php">
                                     <h2>Google inks pact for new 35-storey office</h2>
                                 </a>
                                 <p>That dominion stars lights dominion divide years for fourth have don't stars is that
@@ -188,7 +200,7 @@
                             </div>
 
                             <div class="blog_details">
-                                <a class="d-inline-block" href="single-blog.html">
+                                <a class="d-inline-block" href="single-blog.php">
                                     <h2>9 Tips Sederhana Merawat Kucing Kesayangan</h2>
                                 </a>
                                 <p>Artikel ini ditujukan buat kalian yang pecinta kucing. Walau kadang ngeselin, kucing itu efektif banget untuk mengurangi stres! Selain menggemeskan, kucing juga bisa menjadi teman di kala sedih. Namun itu semua akan berlangsung mulus bila kamu tahu cara merawat kucing di rumah dengan benar! 
@@ -210,7 +222,7 @@
                             </div>
 
                             <div class="blog_details">
-                                <a class="d-inline-block" href="single-blog.html">
+                                <a class="d-inline-block" href="single-blog.php">
                                     <h2>Google inks pact for new 35-storey office</h2>
                                 </a>
                                 <p>That dominion stars lights dominion divide years for fourth have don't stars is that
@@ -232,7 +244,7 @@
                             </div>
 
                             <div class="blog_details">
-                                <a class="d-inline-block" href="single-blog.html">
+                                <a class="d-inline-block" href="single-blog.php">
                                     <h2>Google inks pact for new 35-storey office</h2>
                                 </a>
                                 <p>That dominion stars lights dominion divide years for fourth have don't stars is that
@@ -332,7 +344,7 @@
                             <div class="media post_item">
                                 <img src="img/post/post_1.png" alt="post">
                                 <div class="media-body">
-                                    <a href="single-blog.html">
+                                    <a href="single-blog.php">
                                         <h3>From life was you fish...</h3>
                                     </a>
                                     <p>January 12, 2019</p>
@@ -341,7 +353,7 @@
                             <div class="media post_item">
                                 <img src="img/post/post_2.png" alt="post">
                                 <div class="media-body">
-                                    <a href="single-blog.html">
+                                    <a href="single-blog.php">
                                         <h3>The Amazing Hubble</h3>
                                     </a>
                                     <p>02 Hours ago</p>
@@ -350,7 +362,7 @@
                             <div class="media post_item">
                                 <img src="img/post/post_3.png" alt="post">
                                 <div class="media-body">
-                                    <a href="single-blog.html">
+                                    <a href="single-blog.php">
                                         <h3>Astronomy Or Astrology</h3>
                                     </a>
                                     <p>03 Hours ago</p>
@@ -359,7 +371,7 @@
                             <div class="media post_item">
                                 <img src="img/post/post_4.png" alt="post">
                                 <div class="media-body">
-                                    <a href="single-blog.html">
+                                    <a href="single-blog.php">
                                         <h3>Asteroids telescope</h3>
                                     </a>
                                     <p>01 Hours ago</p>

@@ -83,8 +83,8 @@
                                     <li><a href="about.html">about</a></li>
                                     <li><a href="#">blog <i class="ti-angle-down"></i></a>
                                         <ul class="submenu">
-                                            <li><a href="blog.html">blog</a></li>
-                                            <li><a href="single-blog.html">single-blog</a></li>
+                                            <li><a href="blog.php">blog</a></li>
+                                            <li><a href="single-blog.php">single-blog</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Diagnosa <i class="ti-angle-down"></i></a>
@@ -133,43 +133,27 @@
                      <img class="img-fluid" src="img/blog/thumbnail_blog_1.jpeg" alt="">
                   </div>
                   <div class="blog_details">
-                     <h2>9 Tips Sederhana Merawat Kucing Kesayangan
+                     <h2>
+                        <?php
+                                        $conn=mysqli_connect("localhost", "root", "", "db_anipat");
+                                        $result=mysqli_query($conn,"SELECT judul FROM t_artikel WHERE id = 1");
+                                        while($row = mysqli_fetch_array($result)){
+                                            echo $row['judul'];
+                                        }
+                        ?>
                      </h2>
                      <ul class="blog-info-link mt-3 mb-4">
                         <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
                         <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
                      </ul>
                      <p class="excert">
-                        Artikel ini ditujukan buat kalian yang pecinta kucing. Walau kadang ngeselin, kucing itu efektif banget untuk mengurangi stres! Selain menggemeskan, kucing juga bisa menjadi teman di kala sedih. Namun itu semua akan berlangsung mulus bila kamu tahu cara merawat kucing di rumah dengan benar! Buat yang belum tahu, yuk simak beberapa tips dari Blog Blibli Friends ini!
-                        <br>     
-                              1. Pahami kebutuhan dan asupan gizinya dari kecil
-                              Tahu nggak, kalau anak kucing membutuhkan jumlah gizi dua kali lebih besar dibandingkan kucing dewasa? Namun bukan artinya harus diberi makan terus ya!
-                              Biasanya anak kucing akan mulai belajar makan setelah umur 5-6 minggu meski masih menyusu pada induknya. Kamu bisa memberikan makanan secara rutin 4 kali setiap hari. Pastikan juga kamu memilih makanan kucing yang mengandung banyak vitamin dan nutrisi untuk kesehatan si kucing.
-                     </p>
-                     <p>
-                        MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                        should have to spend money on boot camp when you can get the MCSE study materials yourself at a
-                        fraction of the camp price. However, who has the willpower to actually sit through a
-                        self-imposed MCSE training. who has the willpower to actually
-                     </p>
-                     <div class="quote-wrapper">
-                        <div class="quotes">
-                           MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                           should have to spend money on boot camp when you can get the MCSE study materials yourself at
-                           a fraction of the camp price. However, who has the willpower to actually sit through a
-                           self-imposed MCSE training.
-                        </div>
-                     </div>
-                     <p>
-                        MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                        should have to spend money on boot camp when you can get the MCSE study materials yourself at a
-                        fraction of the camp price. However, who has the willpower
-                     </p>
-                     <p>
-                        MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                        should have to spend money on boot camp when you can get the MCSE study materials yourself at a
-                        fraction of the camp price. However, who has the willpower to actually sit through a
-                        self-imposed MCSE training. who has the willpower to actually
+                     <?php
+                                        $conn=mysqli_connect("localhost", "root", "", "db_anipat");
+                                        $result=mysqli_query($conn,"SELECT isi FROM t_artikel WHERE id = 1");
+                                        while($row = mysqli_fetch_array($result)){
+                                            echo $row['isi'];
+                                        }
+                                        ?>
                      </p>
                   </div>
                </div>
@@ -418,7 +402,7 @@
                      <div class="media post_item">
                         <img src="img/post/post_1.png" alt="post">
                         <div class="media-body">
-                           <a href="single-blog.html">
+                           <a href="single-blog.php">
                               <h3>From life was you fish...</h3>
                            </a>
                            <p>January 12, 2019</p>
@@ -427,7 +411,7 @@
                      <div class="media post_item">
                         <img src="img/post/post_2.png" alt="post">
                         <div class="media-body">
-                           <a href="single-blog.html">
+                           <a href="single-blog.php">
                               <h3>The Amazing Hubble</h3>
                            </a>
                            <p>02 Hours ago</p>
@@ -436,7 +420,7 @@
                      <div class="media post_item">
                         <img src="img/post/post_3.png" alt="post">
                         <div class="media-body">
-                           <a href="single-blog.html">
+                           <a href="single-blog.php">
                               <h3>Astronomy Or Astrology</h3>
                            </a>
                            <p>03 Hours ago</p>
@@ -445,7 +429,7 @@
                      <div class="media post_item">
                         <img src="img/post/post_4.png" alt="post">
                         <div class="media-body">
-                           <a href="single-blog.html">
+                           <a href="single-blog.php">
                               <h3>Asteroids telescope</h3>
                            </a>
                            <p>01 Hours ago</p>
