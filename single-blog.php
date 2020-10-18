@@ -135,6 +135,12 @@
                   <div class="blog_details">
                      <h2>
                         <?php
+
+                        if($_GET['id']=='id'){
+                           echo "Selamat datang $_GET[nama], ini adalah halaman Home";
+                        }elseif($_GET['hal']=='about'){
+                           echo "Ini adalah halaman about";
+                        }
                                         $conn=mysqli_connect("localhost", "root", "", "db_anipat");
                                         $result=mysqli_query($conn,"SELECT judul FROM t_artikel WHERE id = 1");
                                         while($row = mysqli_fetch_array($result)){

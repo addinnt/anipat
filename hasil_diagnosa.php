@@ -122,23 +122,31 @@
     <div class="pet_care_area">
         <div class="container">
            
-           <form action="hasil_diagnosa.php" method="get">
+           <form action="#" method="get">
                                 <div class="form-group form-float">
                                     <div>
                                         <?php
-                                        $conn=mysqli_connect("localhost", "root", "", "db_anipat");
-                                        $result=mysqli_query($conn,"SELECT*FROM gejala_umum");
-                                        
-                                        while($row = mysqli_fetch_array($result)){
-                                          
-                                        echo " 
-                                                     <div class='form-check form-check-inline'>
-                                                      <input class='form-check-input' type='radio' id='$row[id]' name='$row[gejala]' value='$row[id]'>
-                                                      <label class='form-check-label' for='$row[id]'>".$row['gejala']."</label>
-                                                    </div>
-                                                    ";
+                                        if(isset($_GET['id'])){
+                                            $id_gejalaumum=$_GET['id_gejalaumum'];
                                             
+
+                                        foreach($id as $id){
+
+                                            $conn=mysqli_connect("localhost", "root", "", "db_anipat");
+                                            $result=mysqli_query($conn,"SELECT * FROM gejala_khusus where id_gejalaumum = '$id_gejalaumum' ");
+                                            
+                                            while($row = mysqli_fetch_array($result)){
+                                            echo " 
+                                                         <div class='form-check form-check-inline'>
+                                                          <input class='form-check-input' type='radio' id='$row[id]' name='$row[gejala]' value='$row[id]'>
+                                                          <label class='form-check-label' for='$row[id_gejalaumum]'>".$row['gejala']."</label>
+                                                        </div>
+                                                        ";
+                                                
+                                            }
                                         }
+                                        }
+                                        
                                         ?>
                                         
                                     </div>
