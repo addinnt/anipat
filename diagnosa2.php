@@ -80,16 +80,16 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a  href="index.html">home</a></li>
-                                        <li><a href="about.html">about</a></li>
-                                        <li><a href="#">blog <i class="ti-angle-down"></i></a>
+                                        <li><a href="about.html">about us</a></li>
+                                        <li><a href="#">Cara Perawatan <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="blog.php">blog</a></li>
                                                 <li><a href="single-blog.php">single-blog</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="diagnosa.php">Diagnosa</a></li>
-                                        <li><a href="service.html">services</a></li>
                                         <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="login.php">Login</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -122,17 +122,17 @@
     <div class="pet_care_area">
         <div class="container">
            
-           <form action="#" method="post">
+           <form action="" method="post">
                                 <div class="form-group form-float">
                                     <div>
                                         <?php
-                                        $conn=mysqli_connect("localhost", "root", " ", "db_anipat");
-                                        $result=mysqli_query($conn,"SELECT*FROM t_gejala");
+                                         include 'conn.php';
+                                        $result=mysqli_query($conn,"SELECT*FROM t_gejalakhusus WHERE id_gejalaumum='".$_GET['id_gejalaumum']."'");
                                         while($row = mysqli_fetch_array($result)){
-                                                                        echo " 
-                                                     <div class='form-check form-check-inline'>
-                                                      <input class='form-check-input' type='checkbox' id='$row[id_gejala]' name='id_gejala[]' value='$row[penyakit]'>
-                                                      <label class='form-check-label' for='$row[id_gejala]'>".$row['nama']."</label>
+                                                  echo " 
+                                                    <div class='form-check form-check-inline'>
+                                                      <input class='form-check-input' type='checkbox' id='$row[id_gejalakhusus]' name='id_gejalakhusus[]' value='$row[id_gejalakhusus]'>
+                                                      <label class='form-check-label' for='$row[id_gejalakhusus]'>".$row['nama']."</label>
                                                     </div>
                                                     ";
                                             
@@ -145,32 +145,32 @@
 
                                 <button type="submit" class="btn btn-success waves-effect btn-order">Analisa Gejala</button>
                             </form> 
-        </div>
 
-        <div class="container">
-            <?php
-            if(isset($_POST['id_gejala'])){
-            $a=$_POST['id_gejala'];
+                            <p></p>
 
-            $a=array_unique($a);
-            foreach($a as $a){
+                            <?php
+
+                            if (isset($_POST['id_gejalakhusus'])) {
+
+                                $result=mysqli_query($conn,"SELECT*FROM t_gejalaumum WHERE id_gejalaumum='".$_GET['id_gejalaumum']."'");
+                                $row = mysqli_fetch_array($result);
+
+                                $result2=mysqli_query($conn,"SELECT*FROM t_penyakit WHERE id_penyakit = '".$row['id_penyakit']."'");
+                                $row2 = mysqli_fetch_array($result2);
+
+                                $result3=mysqli_query($conn,"SELECT*FROM t_obat WHERE id_penyakit='".$row['id_penyakit']."'");
+                                $row3 = mysqli_fetch_array($result3);
+
+                                echo"<p class='alert alert-info'>
+                                PENYAKIT : ".$row2['nama'].
+                                "</br>
+                                OBAT  : ".$row3['nama']."</p>";
+                            }
 
 
-                 $conn=mysqli_connect("localhost", "root", " ", "db_anipat");
-                 $result=mysqli_query($conn,"SELECT*FROM t_penyakit WHERE id_penyakit ='$a'");
-                   $row = mysqli_fetch_array($result);
-            
-            $conn=mysqli_connect("localhost", "root", " ", "db_anipat");
-                 $result2=mysqli_query($conn,"SELECT*FROM t_obat WHERE id_penyakit ='$a'");
-                   $row2 = mysqli_fetch_array($result2);
-               echo "<p>PENYAKIT ".$row['nama']."</br>";
-               echo "OBAT ".$row2['obat']."</p>";
+                            ?>
+          
 
-                }
-            
-
-             }
-            ?>
         </div>
     </div>
     <!-- pet_care_area_end  -->

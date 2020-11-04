@@ -41,7 +41,7 @@
                         <div class="col-lg-6 col-md-8">
                             <div class="short_contact_list">
                                 <ul>
-                                    <li><a href="#">+62857-3314-7421</a></li>
+                                    <li><a href="#">+880 4664 216</a></li>
                                     <li><a href="#">Mon - Sat 10:00 - 7:00</a></li>
                                 </ul>
                             </div>
@@ -80,16 +80,16 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a  href="index.html">home</a></li>
-                                        <li><a href="about.html">about</a></li>
-                                        <li><a href="#">blog <i class="ti-angle-down"></i></a>
+                                        <li><a href="about.html">about us</a></li>
+                                        <li><a href="#">Cara Perawatan <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="blog.php">blog</a></li>
                                                 <li><a href="single-blog.php">single-blog</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="diagnosa.php">Diagnosa</a></li>
-                                        <li><a href="service.html">services</a></li>
                                         <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="login.php">Login</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -122,19 +122,17 @@
     <div class="pet_care_area">
         <div class="container">
            
-           <form action="hasil_diagnosa.php" method="get">
+           <form action="diagnosa2.php" method="get">
                                 <div class="form-group form-float">
                                     <div>
                                         <?php
-                                        $conn=mysqli_connect("localhost", "root", "", "db_anipat");
-                                        $result=mysqli_query($conn,"SELECT*FROM gejala_umum");
-                                        
+                                        include 'conn.php';
+                                        $result=mysqli_query($conn,"SELECT*FROM t_gejalaumum");
                                         while($row = mysqli_fetch_array($result)){
-                                          
-                                        echo " 
-                                                     <div class='form-check form-check-inline'>
-                                                      <input class='form-check-input' type='radio' id='$row[id]' name='$row[gejala]' value='$row[id]'>
-                                                      <label class='form-check-label' for='$row[id]'>".$row['gejala']."</label>
+                                                  echo " 
+                                                    <div class='form-check form-check-inline'>
+                                                      <input class='form-check-input' type='radio' id='$row[id_gejalaumum]' name='id_gejalaumum' value='$row[id_gejalaumum]'>
+                                                      <label class='form-check-label' for='$row[id_gejalaumum]'>".$row['nama']."</label>
                                                     </div>
                                                     ";
                                             
@@ -147,44 +145,8 @@
 
                                 <button type="submit" class="btn btn-success waves-effect btn-order">Analisa Gejala</button>
                             </form> 
-        </div>
+          
 
-        <div class="container">
-            <?php
-            if(isset($_GET['id'])){
-            $a=$_GET['id'];
-
-            //$a=array_unique($a);
-            foreach($a as $a){
-
-                
-                 $conn=mysqli_connect("localhost", "root", "", "db_anipat");
-                 $result=mysqli_query($conn,"SELECT*FROM gejala_khusus WHERE id_gejalaumum ='$a'");
-                 while($row = mysqli_fetch_array($result)){
-                    echo " 
-                                 <div class='form-check form-check-inline'>
-                                  <input class='form-check-input' type='radio' id='$row[id]' name='id[]' value='$row[gejala]'>
-                                  <label class='form-check-label' for='$row[id]'>".$row['gejala']."</label>
-                                </div>
-                                ";
-                        
-                    }
-
-                //  $conn=mysqli_connect("localhost", "root", " ", "db_anipat");
-                //  $result=mysqli_query($conn,"SELECT*FROM t_penyakit WHERE id_penyakit ='$a'");
-                //    $row = mysqli_fetch_array($result);
-            
-            // $conn=mysqli_connect("localhost", "root", "", "db_anipat");
-            //      $result2=mysqli_query($conn,"SELECT*FROM t_obat WHERE id_penyakit ='$a'");
-            //        $row2 = mysqli_fetch_array($result2);
-            //    echo "<p>PENYAKIT ".$row['nama']."</br>";
-            //    echo "OBAT ".$row2['obat']."</p>";
-
-                }
-            
-
-             }
-            ?>
         </div>
     </div>
     <!-- pet_care_area_end  -->
