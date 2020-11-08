@@ -145,7 +145,8 @@
                                     </br>
                                 
                                     <a href="editartikel.php?id_artikel=<?php echo $a['id_artikel']; ?>" class="label label-warning">Edit</a>
-                                    <a href="delete.php?id_artikel=<?php echo $a['id_artikel']; ?>'" class="label label-danger">Delete</a>
+                                    <a href="delete.php?id_artikel=<?php echo $a['id_artikel']; ?>" class="label label-warning">dEdit</a>
+                                    <!-- <a href="delete.php?id_artikel=<?php echo $a['id_artikel']; ?>" class="label label-danger">Delete</a> -->
                                 </p>
                               
                             </div>
