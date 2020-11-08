@@ -137,8 +137,13 @@
                                     <h2><?=$a['id_artikel']?></h2>
                                     <h2><?=$a['judul']?></h2>
                                 </a>
-                                <p><?=substr($a['isi'], 0, 200)?>
+                                <p><?=substr($a['preview'], 0, 300)?>
                                     </br>
+                                <p></p>
+                                isi
+                                <p><?=substr($a['isi'], 0, 800)?>
+                                    </br>
+                                
                                     <a href="editartikel.php?id_artikel=<?php echo $a['id_artikel']; ?>" class="label label-warning">Edit</a>
                                     <a href="delete.php?id_artikel=<?php echo $a['id_artikel']; ?>'" class="label label-danger">Delete</a>
                                 </p>

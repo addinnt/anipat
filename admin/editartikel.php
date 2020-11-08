@@ -120,17 +120,18 @@
                   </div>
                   <div class="form-group">
                     <label for="isi">Artikel</label>
-					<input type ="text" class="form-control"  name="isi" id="isi" value="<?php echo $d['isi']; ?>">
+                    <textarea rows="20" class="form-control"  name="isi" id="isi"><?php echo $d['isi']; ?></textarea>
+					<!-- <textarea type ="text"cols="170" rows="9"></textarea> -->
                   </div>
                   <div class="form-group">
                     <label for="preview">Preview</label>
-                    <input type="text" class="form-control" name="preview" id="preview" value="<?php echo $d['preview']; ?>">
+                    <textarea rows="5" class="form-control" name="preview" id="preview"><?php echo $d['preview']; ?></textarea>
 			      </div>
 
-                   
                   <input type="submit" name="submit" class="btn btn-primary" value="Simpan"/>
                 </form>
                 <p></p>
+                <p></p> <p></p> <p></p> <p></p>
 		
 			<?php 
 	}
